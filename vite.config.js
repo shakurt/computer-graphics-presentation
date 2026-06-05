@@ -1,8 +1,7 @@
 import { defineConfig } from 'vite';
 
 const repository = process.env.GITHUB_REPOSITORY;
-const repositoryName =
-  repository && repository.includes('/') ? repository.split('/')[1] : '';
+const repositoryName = repository?.match(/^[^/]+\/([^/]+)$/)?.[1] ?? '';
 const isGitHubActions = process.env.GITHUB_ACTIONS === 'true';
 
 export default defineConfig({
